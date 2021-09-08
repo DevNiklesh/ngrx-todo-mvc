@@ -6,6 +6,7 @@ import { environment } from '@app/environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TodosModule } from './todos/todos.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TodosModule } from './todos/todos.module';
       maxAge: 25,
     }) : [],
     TodosModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

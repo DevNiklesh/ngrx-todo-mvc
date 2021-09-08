@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { ITodo } from '../interfaces';
@@ -12,11 +12,13 @@ import * as todoSelectors from '../state/todo.selectors';
 export class TodosService {
 
   allTodos$: Observable<ITodo[]>;
+  filterMode$: Observable<FILTER_MODES>;
 
   constructor(
     private store: Store<ITodosState>,
   ) {
     this.allTodos$ = this.store.select(todoSelectors.allTodos);
+    this.filterMode$ = this.store.select(todoSelectors.filMode);
   }
 
   addTodo(text: string): void {

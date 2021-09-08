@@ -1,28 +1,29 @@
 <main class="todoapp">
   <header class="header">
     <h1>todos</h1>
-    <form enctype="application/x-www-form-urlencoded" role="form" novalidate>
-      <input class="new-todo" placeholder="What needs to be done" autofocus>
+    <form role="form" novalidate (submit)='addTodo()'>
+      <input class="new-todo" [(ngModel)]='newTodoText' placeholder="What needs to be done" autofocus>
     </form>
   </header>
   <section class="main">
     <app-complete-all></app-complete-all>
-    <app-todos-list></app-todos-list>
+    <app-todos-list [todoList]='todoList$ | async' [filterMode]='filterMode'></app-todos-list>
   </section>
   <footer class="footer">
-    <span class="todo-count"></span>
+    <span class="todo-count">{{ (activeTodos$ | async).length }} items left</span>
     <ul class="filters">
       <li>
-        <a href="#" class="selected">All</a>
+        <a routerLink="" [class.selected]='filterMode === "All"' (click)='changeFilterMode("All")'>All</a>
       </li>
       <li>
-        <a href="#">Active</a>
+        <a routerLink="" [class.selected]='filterMode === "Active"' (click)='changeFilterMode("Active")'>Active</a>
       </li>
       <li>
-        <a href="#" >Completed</a>
+        <a routerLink="" [class.selected]='filterMode === "Completed"'
+          (click)='changeFilterMode("Completed")'>Completed</a>
       </li>
     </ul>
-    <button class="clear-completed">Clear completed</button>
+    <button class="clear-completed" (click)='clearCompleted()'>Clear completed</button>
   </footer>
 </main>
 <footer class="info">

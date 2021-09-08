@@ -7,3 +7,10 @@ export const allTodos = createSelector(
   todosSelector,
   todosState.todos,
 );
+
+export const filterModeSelector = createFeatureSelector<todosState.ITodosState>('todos');
+
+export const filMode = createSelector(
+  filterModeSelector,
+  todosState.filterMode,
+);
