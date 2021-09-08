@@ -1,5 +1,5 @@
 
-This project is a fork of [Todo MVC](http://todomvc.com/)
+Inspired from [Todo MVC](http://todomvc.com/)
 
 
 Equivalent project: [http://todomvc.com/examples/vanillajs/](http://todomvc.com/examples/vanillajs/).
